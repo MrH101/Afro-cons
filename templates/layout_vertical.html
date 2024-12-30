@@ -1,0 +1,50 @@
+{% extends './master.html' %}
+
+{% block layout %}
+<!-- Layout wrapper: Start -->
+<div class="layout-wrapper layout-content-navbar layout-without-menu">
+  <div class="layout-container">
+
+    <!-- Menu: Start -->
+    {% include "includes/partials/vertical_menu.html" %}
+    <!-- Menu: End -->
+
+    <!-- Layout page: Start -->
+    <div class="layout-page">
+
+
+  
+      <!-- Navbar: Start -->
+      {% include "includes/partials/navbar.html" %}
+      <!-- Navbar: End -->
+
+
+
+      <!-- Content wrapper: Start -->
+      <div class="content-wrapper">
+        <!-- Content: Start -->
+        <div class="d-flex align-items-stretch flex-grow-1 p-0">
+        
+          
+            {% block content %}
+          
+            {% endblock content %}
+
+          <!-- / Content: End -->
+
+          {% include "includes/partials/footer.html" %}
+          <div class="content-backdrop fade"></div>
+        
+        <!--/ Content wrapper: End -->
+      </div>
+      <!-- / Layout page: End -->
+    </div>
+
+    
+    <!-- Overlay -->
+    
+    <!-- Drag Target Area To SlideIn Menu On Small Screens -->
+    <div class="drag-target"></div>
+  </div>
+  <!-- Layout wrapper: End -->
+  {% endblock layout %}

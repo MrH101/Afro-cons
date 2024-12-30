@@ -1,0 +1,232 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+
+<!-- Page Content-->
+    <!-- Header-->
+    <div class="page-title-overlap bg-accent pt-4">
+        <div class="container d-flex flex-wrap flex-sm-nowrap justify-content-center justify-content-sm-between align-items-center pt-2">
+          <div class="media media-ie-fix align-items-center pb-3">
+            <div class="img-thumbnail rounded-circle position-relative" style="width: 6.375rem;"><img class="rounded-circle" src="{{vendor.vendor_images.url}}" alt="Createx Studio"></div>
+            <div class="media-body pl-3">
+              <h3 class="text-light font-size-lg mb-0">{{vendor.store_name}}</h3><span class="d-block text-light font-size-ms opacity-60 py-1">Member since {{vendor.date_joined}}</span>
+              {%if is_verified == True %}
+              <span class="badge badge-success"><i class="czi-check mr-1"></i>Verified</span>
+              {% else %}
+              <span class="badge badge-failed"><i class="czi-check mr-1"></i>Not Verified</span>
+              {% endif %}
+            </div>
+
+          </div>
+          <div class="d-flex">
+            <div class="text-sm-right mr-5">
+              <div class="text-light font-size-base">Total sales</div>
+              <h3 class="text-light">426</h3>
+            </div>
+            <div class="text-sm-right">
+              <div class="text-light font-size-base">Seller rating</div>
+              <div class="star-rating"><i class="sr-star czi-star-filled active"></i><i class="sr-star czi-star-filled active"></i><i class="sr-star czi-star-filled active"></i><i class="sr-star czi-star-filled active"></i><i class="sr-star czi-star"></i>
+              </div>
+              <div class="text-light opacity-60 font-size-xs">Based on 98 reviews</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container mb-5 pb-3">
+        <div class="bg-light box-shadow-lg rounded-lg overflow-hidden">
+          <div class="row">
+            <!-- Sidebar-->
+            <aside class="col-lg-4">
+              <div class="cz-sidebar-static h-100 border-right">
+                <h6>About</h6>
+                <p class="font-size-ms text-muted">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium viras doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                <hr class="my-4">
+                <h6>Contacts</h6>
+                <ul class="list-unstyled font-size-sm">
+                  <li><a class="nav-link-style d-flex align-items-center" href="mailto:contact@example.com"><i class="czi-mail opacity-60 mr-2"></i>{{vendor.email}}</a></li>
+                  <li><a class="nav-link-style d-flex align-items-center" href="#"><i class="czi-globe opacity-60 mr-2"></i>{{vendor.phone_number}}</a></li>
+                </ul><a class="social-btn sb-facebook sb-outline sb-sm mr-2 mb-2" href="#"><i class="czi-facebook"></i></a><a class="social-btn sb-twitter sb-outline sb-sm mr-2 mb-2" href="#"><i class="czi-twitter"></i></a><a class="social-btn sb-dribbble sb-outline sb-sm mr-2 mb-2" href="#"><i class="czi-dribbble"></i></a><a class="social-btn sb-behance sb-outline sb-sm mr-2 mb-2" href="#"><i class="czi-behance"></i></a>
+                <hr class="my-4">
+                <h6 class="pb-1">Send message</h6>
+                <form class="needs-validation pb-2" method="post" novalidate>
+                  <div class="form-group">
+                    <textarea class="form-control" rows="6" placeholder="Your message" required></textarea>
+                    <div class="invalid-feedback">Please wirte your message!</div>
+                  </div>
+                  <button class="btn btn-primary btn-sm btn-block" type="submit">Send</button>
+                </form>
+              </div>
+            </aside>
+            <!-- Content-->
+            <section class="col-lg-8 pt-lg-4 pb-md-4">
+              <div class="pt-2 px-4 pl-lg-0 pr-xl-5">
+                <h2 class="h3 pt-2 pb-4 mb-4 text-center text-sm-left border-bottom">Products<span class="badge badge-secondary font-size-sm text-body align-middle ml-2">6</span></h2>
+                <div class="row pt-2">
+                  <!-- Product-->
+                  <div class="col-sm-6 mb-grid-gutter">
+                    {% for product in products %}
+                    <div class="card product-card-alt">
+                      <div class="product-thumb">
+                        <button class="btn-wishlist btn-sm" type="button"><i class="czi-heart"></i></button>
+                        <div class="product-card-actions">
+                          <a class="btn btn-light btn-icon btn-shadow font-size-base mx-2" href="marketplace-single.html">
+                            <i class="czi-eye"></i>
+                          </a>
+                          <button class="btn btn-light btn-icon btn-shadow font-size-base mx-2" type="button" data-toggle="toast" data-target="#cart-toast">
+                            <i class="czi-cart"></i></button>
+                        </div><a class="product-thumb-overlay" href="marketplace-single.html">
+
+                        </a><img src="{{product.images.url}}" alt="Product">
+                      </div>
+
+                      <div class="card-body">
+                        <div class="d-flex flex-wrap justify-content-between align-items-start pb-2">
+                          <div class="text-muted font-size-xs mr-1">by <a class="product-meta font-weight-medium" href="#"> {{vendor.store_name}}</a><a class="product-meta font-weight-medium" href="#"></a></div>
+                          <div class="star-rating"><i class="sr-star czi-star-filled active"></i><i class="sr-star czi-star-filled active"></i><i class="sr-star czi-star-filled active"></i><i class="sr-star czi-star-filled active"></i><i class="sr-star czi-star-filled active"></i>
+                          </div>
+                        </div>
+                        <h3 class="product-title font-size-sm mb-2"><a href="marketplace-single.html">{{product.product_name}}</a></h3>
+                        <div class="d-flex flex-wrap justify-content-between align-items-center">
+                          <div class="font-size-sm mr-2"><i class="czi-download text-muted mr-1"></i>26<span class="font-size-xs ml-1">Sales</span></div>
+                          <div class="bg-faded-accent text-accent rounded-sm py-1 px-2">$18.<small>00</small></div>
+                        </div>
+                      </div>
+                    </div>
+                    {% endfor %}
+                  </div>
+                  <!-- Product-->
+                  <div class="col-sm-6 mb-grid-gutter">
+                    <div class="card product-card-alt">
+                      <div class="product-thumb">
+                        <button class="btn-wishlist btn-sm" type="button"><i class="czi-heart"></i></button>
+                        <div class="product-card-actions"><a class="btn btn-light btn-icon btn-shadow font-size-base mx-2" href="marketplace-single.html"><i class="czi-eye"></i></a>
+                          <button class="btn btn-light btn-icon btn-shadow font-size-base mx-2" type="button" data-toggle="toast" data-target="#cart-toast"><i class="czi-cart"></i></button>
+                        </div><a class="product-thumb-overlay" href="marketplace-single.html"></a><img src="img/marketplace/products/01.jpg" alt="Product">
+                      </div>
+                      <div class="card-body">
+                        <div class="d-flex flex-wrap justify-content-between align-items-start pb-2">
+                          <div class="text-muted font-size-xs mr-1">by <a class="product-meta font-weight-medium" href="#">Createx Std. </a>in <a class="product-meta font-weight-medium" href="#">UI Design</a></div>
+                          <div class="star-rating"><i class="sr-star czi-star-filled active"></i><i class="sr-star czi-star-filled active"></i><i class="sr-star czi-star-filled active"></i><i class="sr-star czi-star-filled active"></i><i class="sr-star czi-star"></i>
+                          </div>
+                        </div>
+                        <h3 class="product-title font-size-sm mb-2"><a href="marketplace-single.html">Square Style Mobile UI Kit (Sketch)</a></h3>
+                        <div class="d-flex flex-wrap justify-content-between align-items-center">
+                          <div class="font-size-sm mr-2"><i class="czi-download text-muted mr-1"></i>153<span class="font-size-xs ml-1">Sales</span></div>
+                          <div class="bg-faded-accent text-accent rounded-sm py-1 px-2">$24.<small>00</small></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Product-->
+                  <div class="col-sm-6 mb-grid-gutter">
+                    <div class="card product-card-alt">
+                      <div class="product-thumb">
+                        <button class="btn-wishlist btn-sm" type="button"><i class="czi-heart"></i></button>
+                        <div class="product-card-actions"><a class="btn btn-light btn-icon btn-shadow font-size-base mx-2" href="marketplace-single.html"><i class="czi-eye"></i></a>
+                          <button class="btn btn-light btn-icon btn-shadow font-size-base mx-2" type="button" data-toggle="toast" data-target="#cart-toast"><i class="czi-cart"></i></button>
+                        </div><a class="product-thumb-overlay" href="marketplace-single.html"></a><img src="img/marketplace/products/05.jpg" alt="Product">
+                      </div>
+                      <div class="card-body">
+                        <div class="d-flex flex-wrap justify-content-between align-items-start pb-2">
+                          <div class="text-muted font-size-xs mr-1">by <a class="product-meta font-weight-medium" href="#">Createx Std. </a>in <a class="product-meta font-weight-medium" href="#">UI Design</a></div>
+                          <div class="star-rating"><i class="sr-star czi-star-filled active"></i><i class="sr-star czi-star-filled active"></i><i class="sr-star czi-star-filled active"></i><i class="sr-star czi-star-filled active"></i><i class="sr-star czi-star"></i>
+                          </div>
+                        </div>
+                        <h3 class="product-title font-size-sm mb-2"><a href="marketplace-single.html">Minimal Mobile App UI Kit (Sketch)</a></h3>
+                        <div class="d-flex flex-wrap justify-content-between align-items-center">
+                          <div class="font-size-sm mr-2"><i class="czi-download text-muted mr-1"></i>117<span class="font-size-xs ml-1">Sales</span></div>
+                          <div class="bg-faded-accent text-accent rounded-sm py-1 px-2">$23.<small>00</small></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Product-->
+                  <div class="col-sm-6 mb-grid-gutter">
+                    <div class="card product-card-alt">
+                      <div class="product-thumb">
+                        <button class="btn-wishlist btn-sm" type="button"><i class="czi-heart"></i></button>
+                        <div class="product-card-actions"><a class="btn btn-light btn-icon btn-shadow font-size-base mx-2" href="marketplace-single.html"><i class="czi-eye"></i></a>
+                          <button class="btn btn-light btn-icon btn-shadow font-size-base mx-2" type="button" data-toggle="toast" data-target="#cart-toast"><i class="czi-cart"></i></button>
+                        </div><a class="product-thumb-overlay" href="marketplace-single.html"></a><img src="img/marketplace/products/02.jpg" alt="Product">
+                      </div>
+                      <div class="card-body">
+                        <div class="d-flex flex-wrap justify-content-between align-items-start pb-2">
+                          <div class="text-muted font-size-xs mr-1">by <a class="product-meta font-weight-medium" href="#">Createx Std. </a>in <a class="product-meta font-weight-medium" href="#">Graphics</a></div>
+                          <div class="star-rating"><i class="sr-star czi-star-filled active"></i><i class="sr-star czi-star-filled active"></i><i class="sr-star czi-star-filled active"></i><i class="sr-star czi-star-filled active"></i><i class="sr-star czi-star-filled active"></i>
+                          </div>
+                        </div>
+                        <h3 class="product-title font-size-sm mb-2"><a href="marketplace-single.html">Floating Phone and Tablet Mockup (PSD)</a></h3>
+                        <div class="d-flex flex-wrap justify-content-between align-items-center">
+                          <div class="font-size-sm mr-2"><i class="czi-download text-muted mr-1"></i>109<span class="font-size-xs ml-1">Sales</span></div>
+                          <div class="bg-faded-accent text-accent rounded-sm py-1 px-2">$15.<small>00</small></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Product-->
+                  <div class="col-sm-6 mb-grid-gutter">
+                    <div class="card product-card-alt">
+                      <div class="product-thumb">
+                        <button class="btn-wishlist btn-sm" type="button"><i class="czi-heart"></i></button>
+                        <div class="product-card-actions"><a class="btn btn-light btn-icon btn-shadow font-size-base mx-2" href="marketplace-single.html"><i class="czi-eye"></i></a>
+                          <button class="btn btn-light btn-icon btn-shadow font-size-base mx-2" type="button" data-toggle="toast" data-target="#cart-toast"><i class="czi-cart"></i></button>
+                        </div><a class="product-thumb-overlay" href="marketplace-single.html"></a><img src="img/marketplace/products/06.jpg" alt="Product">
+                      </div>
+                      <div class="card-body">
+                        <div class="d-flex flex-wrap justify-content-between align-items-start pb-2">
+                          <div class="text-muted font-size-xs mr-1">by <a class="product-meta font-weight-medium" href="#">Createx Std. </a>in <a class="product-meta font-weight-medium" href="#">Graphics</a></div>
+                          <div class="star-rating"><i class="sr-star czi-star-filled active"></i><i class="sr-star czi-star-filled active"></i><i class="sr-star czi-star-filled active"></i><i class="sr-star czi-star-filled active"></i><i class="sr-star czi-star-filled active"></i>
+                          </div>
+                        </div>
+                        <h3 class="product-title font-size-sm mb-2"><a href="marketplace-single.html">Travel &amp; Landmark Icon Pack (AI)</a></h3>
+                        <div class="d-flex flex-wrap justify-content-between align-items-center">
+                          <div class="font-size-sm mr-2"><i class="czi-download text-muted mr-1"></i>21<span class="font-size-xs ml-1">Sales</span></div>
+                          <div class="bg-faded-accent text-accent rounded-sm py-1 px-2">$17.<small>00</small></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Product-->
+                  <div class="col-sm-6 mb-grid-gutter">
+                    <div class="card product-card-alt">
+                      <div class="product-thumb">
+                        <button class="btn-wishlist btn-sm" type="button"><i class="czi-heart"></i></button>
+                        <div class="product-card-actions"><a class="btn btn-light btn-icon btn-shadow font-size-base mx-2" href="marketplace-single.html"><i class="czi-eye"></i></a>
+                          <button class="btn btn-light btn-icon btn-shadow font-size-base mx-2" type="button" data-toggle="toast" data-target="#cart-toast"><i class="czi-cart"></i></button>
+                        </div><a class="product-thumb-overlay" href="marketplace-single.html"></a><img src="img/marketplace/products/03.jpg" alt="Product">
+                      </div>
+                      <div class="card-body">
+                        <div class="d-flex flex-wrap justify-content-between align-items-start pb-2">
+                          <div class="text-muted font-size-xs mr-1">by <a class="product-meta font-weight-medium" href="#">Createx Std. </a>in <a class="product-meta font-weight-medium" href="#">Graphics</a></div>
+                          <div class="star-rating"><i class="sr-star czi-star-filled active"></i><i class="sr-star czi-star-filled active"></i><i class="sr-star czi-star-filled active"></i><i class="sr-star czi-star-filled active"></i><i class="sr-star czi-star"></i>
+                          </div>
+                        </div>
+                        <h3 class="product-title font-size-sm mb-2"><a href="marketplace-single.html">Project Devices Showcase (PSD)</a></h3>
+                        <div class="d-flex flex-wrap justify-content-between align-items-center">
+                          <div class="font-size-sm mr-2"><i class="czi-download text-muted mr-1"></i>95<span class="font-size-xs ml-1">Sales</span></div>
+                          <div class="bg-faded-accent text-accent rounded-sm py-1 px-2">$18.<small>00</small></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+      <!-- Toast: Added to Cart-->
+      <div class="toast-container toast-bottom-center">
+        <div class="toast mb-3" id="cart-toast" data-delay="5000" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="toast-header bg-success text-white"><i class="czi-check-circle mr-2"></i>
+            <h6 class="font-size-sm text-white mb-0 mr-auto">Added to cart!</h6>
+            <button class="close text-white ml-2 mb-1" type="button" data-dismiss="toast" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          </div>
+          <div class="toast-body">This item has been added to your cart.</div>
+        </div>
+      </div>
+
+
+      {% endblock %}

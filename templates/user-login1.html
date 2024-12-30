@@ -1,0 +1,210 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static%}
+<style>
+    body {
+        background-color: #f0f2f5;
+        font-family: Arial, sans-serif;
+    }
+
+    .login-container {
+        max-width: 400px;
+        margin: 50px auto;
+        background-color: white;
+        padding: 40px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .login-container h2 {
+        font-weight: bold;
+        margin-bottom: 10px;
+        font-size: 24px;
+    }
+
+    .login-container p {
+        margin-bottom: 25px;
+        color: #6c757d;
+    }
+
+    .form-control {
+        border-radius: 6px;
+    }
+
+    .password-input-group {
+        position: relative;
+    }
+
+    .password-input-group .toggle-password {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        color: #6c757d;
+    }
+
+    .form-check-label {
+        margin-left: 5px;
+        font-size: 14px;
+    }
+
+    .forgot-password {
+        font-size: 14px;
+        text-decoration: underline;
+        color: #6f42c1;
+    }
+
+    .forgot-password:hover {
+        color: #5933a6;
+    }
+
+    .login-btn {
+        background-color: #6f42c1;
+        color: white;
+        width: 100%;
+        padding: 10px;
+        border-radius: 6px;
+        border: none;
+        font-size: 16px;
+    }
+
+    .login-btn:hover {
+        background-color: #5933a6;
+    }
+
+    .register-link {
+        margin-top: 20px;
+        font-size: 14px;
+        color: #6c757d;
+    }
+
+    .register-link a {
+        text-decoration: none;
+        color: #6f42c1;
+        font-weight: bold;
+    }
+
+    .register-link a:hover {
+        color: #5933a6;
+    }
+
+    .divider {
+        display: flex;
+        align-items: center;
+        text-align: center;
+        margin: 20px 0;
+    }
+
+    .divider::before, .divider::after {
+        content: '';
+        flex: 1;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .divider:not(:empty)::before {
+        margin-right: .25em;
+    }
+
+    .divider:not(:empty)::after {
+        margin-left: .25em;
+    }
+
+    .social-login {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .social-login a {
+        font-size: 20px;
+        color: #6c757d;
+        transition: color 0.2s;
+    }
+
+    .social-login a:hover {
+        color: #6f42c1;
+    }
+
+    /* Custom styles for background graphic */
+    .background-dots {
+        position: absolute;
+        top: 50px;
+        right: 50px;
+        opacity: 0.25;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+<div class="login-container">
+    <!-- Logo and Welcome Text -->
+    <div class="text-center">
+        <img src="accounts/" alt="Africa-Connect" class="mb-3">
+        <h2>Welcome to Africa-Connect! 👋</h2>
+        <p>Please sign-in and start the adventure</p>
+    </div>
+
+    <!-- Login Form -->
+    <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        {{form.as_p}}
+        
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="remember-me">
+                <label class="form-check-label" for="remember-me">Remember Me</label>
+            </div>
+            <a href="#" class="forgot-password">Forgot Password?</a>
+        </div>
+        <button type="submit" class="login-btn">Login</button>
+    </form>
+
+    {% if messages %}
+    <ul>
+        {% for message in messages %}
+            <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+
+    <!-- Register Link -->
+    <p class="register-link text-center">
+        New on our platform? <a href="#">Create an account</a>
+    </p>
+
+    <!-- Divider -->
+    <div class="divider text-muted">or</div>
+
+    <!-- Social Login Options -->
+    <div class="social-login">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-github"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-google"></i></a>
+    </div>
+</div>
+</div>
+
+<!-- Background Graphics --
+<!-- Password Toggle Script -->
+<script>
+function togglePassword(inputId) {
+    const input = document.getElementById(inputId);
+    const icon = input.nextElementSibling.firstElementChild;
+    if (input.type === "password") {
+        input.type = "text";
+        icon.classList.remove("fa-eye");
+        icon.classList.add("fa-eye-slash");
+    } else {
+        input.type = "password";
+        icon.classList.remove("fa-eye-slash");
+        icon.classList.add("fa-eye");
+    }
+}
+</script>
+
+{% endblock %}

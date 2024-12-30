@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f9f9f9;
+            font-family: Arial, sans-serif;
+        }
+
+        .cart-steps {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .cart-steps .step {
+            display: inline-block;
+            margin: 0 20px;
+            font-size: 1.2rem;
+        }
+
+        .cart-steps .step img {
+            width: 50px;
+            margin-bottom: 10px;
+        }
+
+        .offer-banner {
+            background-color: #e7f9e6;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+
+        .offer-banner p {
+            margin: 0;
+        }
+
+        .shopping-bag {
+            border: 1px solid #ddd;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .shopping-bag .product {
+            border-bottom: 1px solid #ddd;
+            padding: 15px 0;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .shopping-bag .product:last-child {
+            border-bottom: none;
+        }
+
+        .product-info {
+            display: flex;
+        }
+
+        .product-info img {
+            width: 60px;
+            margin-right: 10px;
+        }
+
+        .product-info .product-name {
+            font-weight: bold;
+        }
+
+        .product-info .sold-by {
+            color: #666;
+        }
+
+        .product-info .in-stock {
+            color: green;
+            font-weight: bold;
+        }
+
+        .stars {
+            color: #ffc107;
+        }
+
+        .price {
+            font-size: 1.2rem;
+            color: #6f42c1;
+        }
+
+        .price .old-price {
+            text-decoration: line-through;
+            color: #888;
+        }
+
+        .move-to-wishlist {
+            background-color: transparent;
+            border: 1px solid #6f42c1;
+            color: #6f42c1;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .promo-code {
+            border: 1px solid #ddd;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+        }
+
+        .promo-code input {
+            width: 70%;
+        }
+
+        .promo-code button {
+            background-color: #6f42c1;
+            color: white;
+            margin-left: 10px;
+            padding: 5px 15px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .gift-wrap {
+            margin-top: 15px;
+            color: #666;
+        }
+
+        .price-details {
+            border: 1px solid #ddd;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+        }
+
+        .price-details .total {
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+
+        .place-order {
+            background-color: #6f42c1;
+            color: white;
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container mt-5">
+    <!-- Progress Steps -->
+    <div class="cart-steps">
+        <div class="step">
+            <img src="https://img.icons8.com/ios-filled/50/6f42c1/shopping-cart.png" alt="Cart">
+            <p>Cart</p>
+        </div>
+        <div class="step">
+            <img src="https://img.icons8.com/ios-filled/50/6f42c1/marker--v1.png" alt="Address">
+            <p>Address</p>
+        </div>
+        <div class="step">
+            <img src="https://img.icons8.com/ios-filled/50/6f42c1/refund.png" alt="Payment">
+            <p>Payment</p>
+        </div>
+        <div class="step">
+            <img src="https://img.icons8.com/ios-filled/50/6f42c1/checkmark.png" alt="Confirmation">
+            <p>Confirmation</p>
+        </div>
+    </div>
+
+    <!-- Offer Banner -->
+    <div class="offer-banner">
+        <p><strong>Available Offers</strong></p>
+        <ul>
+            <li>10% Instant Discount on Bank of America Corp Bank Debit and Credit cards</li>
+            <li>25% Cashback Voucher of up to $60 on first-ever PayPal transaction. TCA</li>
+        </ul>
+    </div>
+
+    <div class="row">
+        <!-- Shopping Bag -->
+        <div class="col-md-8">
+            <div class="shopping-bag">
+                <h5>My Shopping Bag (2 Items)</h5>
+
+                <!-- Product 1 -->
+                <div class="product">
+                    <div class="product-info">
+                        <img src="https://img.icons8.com/color/96/google-home.png" alt="Google Home">
+                        <div>
+                            <p class="product-name">Google - Google Home - White</p>
+                            <p class="sold-by">Sold by: <a href="#">Google</a></p>
+                            <p><span class="badge badge-success in-stock">In Stock</span></p>
+                            <div class="stars">
+                                ★★★★☆
+                            </div>
+                            <select class="form-control d-inline-block w-auto">
+                                <option>5</option>
+                                <option>4</option>
+                                <option>3</option>
+                                <option>2</option>
+                                <option>1</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="price">$299 <span class="old-price">$359</span></p>
+                        <button class="move-to-wishlist">Move To Wishlist</button>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product">
+                    <div class="product-info">
+                        <img src="https://img.icons8.com/color/96/iphone-x.png" alt="iPhone 11">
+                        <div>
+                            <p class="product-name">Apple iPhone 11 (64GB, Black)</p>
+                            <p class="sold-by">Sold by: <a href="#">Apple</a></p>
+                            <p><span class="badge badge-success in-stock">In Stock</span></p>
+                            <div class="stars">
+                                ★★★★☆
+                            </div>
+                            <select class="form-control d-inline-block w-auto">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="price">$899 <span class="old-price">$999</span></p>
+                        <button class="move-to-wishlist">Move To Wishlist</button>
+                    </div>
+                </div>
+
+                <a href="#" class="text-primary">Add more products from wishlist</a>
+            </div>
+        </div>
+
+        <!-- Promo Code and Price Details -->
+        <div class="col-md-4">
+            <div class="promo-code">
+                <h5>Offer</h5>
+                <input type="text" class="form-control d-inline-block" placeholder="Enter Promo Code">
+                <button class="btn">Apply</button>
+                <div class="gift-wrap">
+                    <p>Buying a gift for a loved one?</p>
+                    <p>Gift wrap and personalized message on card, Only for $2.</p>
+                    <a href="#" class="text-primary">Add a gift wrap</a>
+                </div>
+            </div>
+
+            <div class="price-details mt-3">
+                <h5>Price Details</h5>
+                <p>Bag Total <span class="float-right">$1198.00</span></p>
+                <p>Coupon Discount <a href="#" class="float-right">Apply Coupon</a></p>
+                <p>Order Total <span class="float-right">$1198.00</span></p>
+                <p>Delivery Charges <span class="float-right"><span class="text-muted">$5.00</span> <span class="text-success">FREE</span></span></p>
+                <hr>
+                <p class="total">Total <span class="float-right">$1198.00</span></p>
+            </div>
+
+            <button class="place-order mt-3">Place Order</button>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap and jQuery JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
